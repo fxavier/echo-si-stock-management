@@ -1,0 +1,7 @@
+Django>=3.2.5,<3.3
+psycopg2>=2.8.6,<2.9
+import-export==0.2.67.dev6
+django-import-export
+Pillow
+django-widget-tweaks
+# django-summernote>=0.8.20.0,<0.9

@@ -1,0 +1,4 @@
+<option value="">Selecione o sector</option>
+{% for sector in sectores %}
+<option value="{{ sector.pk }}">{{ sector.nome }}</option>
+{% endfor %}

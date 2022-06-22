@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>Lista de Cheques Regularizados </p>
+            </div>
+        <div>
+        <div class='details'>
+            Data: {{data|date:'d-m-Y'}} 
+            <hr class='hrItem' />
+        </div>
+    </div>
+
+    <div class="tables">
+    <table>
+     <thead>
+        <tr>
+           <th>Numero</th>
+            <th>Conta</th>
+            <th>Data devolucao</th>
+            <th>Valor</th>
+            <th>Estado</th>
+            <th>Banco</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+        {% for cheque in queryset  %}
+            <td>{{cheque.numero_cheque}}</td>
+            <td>{{cheque.numero_conta}}</td>
+            <td>{{cheque.data_devolucao|date:'d-m-Y'}}</td>
+            <td>{{cheque.valor_cheque}}</td>
+            <td>{{cheque.estado_cheque}}</td>
+            <td>{{cheque.banco.nome}}</td>
+        </tr>
+        {% endfor %}     
+        </tbody>
+      
+    </table> 
+</div>
+    </body>
+</html>

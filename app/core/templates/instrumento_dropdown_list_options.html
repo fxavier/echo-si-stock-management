@@ -1,0 +1,4 @@
+<option value="">Selecione o instrumento</option>
+{% for instrumento in instrumentos %}
+<option value="{{ instrumento.pk }}">{{ instrumento.nome }}</option>
+{% endfor %}

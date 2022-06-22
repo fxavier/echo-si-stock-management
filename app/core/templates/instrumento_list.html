@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+<h3 class="inner-tittle two">Lista de Instrumentos de SI</h3>
+<div class='row'>
+    <a href="{% url 'core:instrumento-new'%}" class="btn btn-success float-right">
+        <span class="glyphicon glyphicon-plus"></span>Novo
+        </a>
+
+</div>
+<div class="graph">
+<div class="tables">
+    <table class="table table-hover">
+     <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Provincia</th>
+            <th>Sector</th>
+            <th>Nome</th>
+            <th>Stock Existente</th>
+        
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+        {% for instrumento in instrumentos  %}
+            <td>{{instrumento.id}}</td>
+            <td>{{instrumento.provincia.nome}}</td>
+            <td>{{instrumento.sector.nome}}</td>
+            {% comment %} <td>{{cheque.data_devolucao|date:'d-m-Y'}}</td> {% endcomment %}
+            <td>{{instrumento.nome}}</td>
+            <td>{{instrumento.stock}}</td>
+        </tr>
+        {% endfor %}     
+        </tbody>
+      
+    </table> 
+</div>
+<a href="#" class="btn btn-success">
+<span class="glyphicon glyphicon-print"></span>Exportar
+</a>
+</div>
+
+</div>
+
+{% endblock content %}

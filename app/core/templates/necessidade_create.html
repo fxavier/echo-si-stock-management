@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container">
+ <!--/forms-inner-->
+<div class="forms-inner">
+<!--/set-1-->
+<div class="set-1">
+  <div class="graph-2 general">
+    <h3 class="inner-tittle two">Necessidade</h3>
+      <div class="grid-1">
+          <div class="form-body">
+             <form class="form-horizontal" method="post" id="necessidadeForm" data-instrumentos-url="{% url 'core:listar_instrumentos' %}">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+              <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field|add_class:"formControl" }}
+              {% for error in field.errors %}
+                <span class="help-block">{{ error }}</span>
+              {% endfor %}
+              </div>
+            {% endfor %}
+            <div class="form-group">
+              
+              <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-ok"></span>Salvar
+              </button>
+              <a href="{% url 'core:index' %}" class="btn btn-danger">Cancelar</a>
+              
+            </div>
+            
+            </form> 
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $("#id_sector").change(function() {
+    var url = $("#necessidadeForm").attr("data-instrumentos-url");
+    var sectorId = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: {
+        'sector': sectorId
+      },
+      success: function(data) {
+        $("#id_instrumento").html(data);
+      }
+    });
+  });
+
+</script>
+{% endblock content  %} 

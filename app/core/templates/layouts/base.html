@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+{% load static %}
+<title>{% block title %}ECHO SI STOCK MANAGEMENT{% endblock title %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ECHO" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+{% comment %} <link href="{% static 'css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' /> {% endcomment %}
+<!-- Custom CSS -->
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'css/mycss.css' %}" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<!-- <link href="{% static 'css/font-awesome.css' %}" rel='stylesheet' type='text/css' /> -->
+<!-- jQuery -->
+<!-- <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'> -->
+<!-- lined-icons -->
+<link href="{% static 'css/icon-font.min.css' %}" rel='stylesheet' type='text/css' />
+<!-- //lined-icons -->
+<!-- <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+<script src="{% static 'js/amcharts.js' %}"></script>	
+<script src="{% static 'js/serial.js' %}"></script>	
+<script src="{% static 'js/light.js' %}"></script>	
+<script src="{% static 'js/radar.js' %}"></script>	
+<link href="{% static 'css/barChart.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'css/fabochart.css' %}" rel='stylesheet' type='text/css' />
+-->
+<!-- Date Time Picker CSS -->
+  <!-- <link rel="stylesheet" href="{% static 'date-time-phone/jquery-ui.css' %}">
+  <link rel='stylesheet' href="{% static 'date-time-phone/jquery-ui-timepicker-addon.css' %}" /> -->
+<!-- Date Time Picker CSS -->
+
+<!--clock init-->
+<!-- <script src="{% static 'js/css3clock.js' %}"></script> -->
+<!--Easy Pie Chart-->
+<!--skycons-icons-->
+<!-- <script src="{% static 'js/skycons.js' %}"></script> -->
+
+ <!-- Date Time Picker JS -->
+<!--  <script src="{% static 'date-time-phone/jquery-ui.js' %}" ></script>
+  <script src="{% static 'date-time-phone/jquery-ui-timepicker-addon.js' %}"></script> -->
+
+<!--<script src="{% static 'js/jquery.easydropdown.js' %}"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
+
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<!-- Font Awesome -->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js" integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
+
+<!-- Tempus Dominus Bootstrap 4 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+<!--//skycons-icons-->
+</head> 
+<body>
+<div class="page-container">
+<!--/content-inner-->
+<div class="left-content">
+	<div class="inner-content">
+	<!-- header-starts -->
+	<div class="header-section">
+				<!--menu-right-->
+	  <div class="top_menu">
+		<div class="main-search">
+			<form>
+				<input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" class="text"/>
+				<input type="submit" value="">
+			</form>
+			<div class="close"><img src="{% static 'images/cross.png' %}" /></div>
+		</div>
+			<div class="srch"><button></button></div>
+			<script type="text/javascript">
+					$('.main-search').hide();
+				$('button').click(function (){
+					$('.main-search').show();
+					$('.main-search text').focus();
+				}
+				);
+				$('.close').click(function(){
+					$('.main-search').hide();
+				});
+			</script>
+			 <!--/profile_details-->
+			 	<div class="profile_details_left">
+			 		<ul class="nofitications-dropdown">
+			 				<li class="dropdown note">
+			 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope-o"></i> <span class="badge">3</span></a>
+			 				</li>
+
+										
+								
+					<li class="dropdown note">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o"></i> <span class="badge">5</span></a>
+
+					</li>	
+				<li class="dropdown note">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i> <span class="badge blue1">9</span></a>
+								
+					</li>		   							   		
+					<div class="clearfix"></div>	
+						</ul>
+					</div>
+					<div class="clearfix"></div>	
+					<!--//profile_details-->
+				</div>
+				<!--//menu-right-->
+			<div class="clearfix"></div>
+	</div>
+			
+	{% block content %}
+	{% endblock content %}
+										
+	<footer>
+		<p>&copy 2022 ECHO . All Rights Reserved</a></p>
+	</footer>
+<!--footer section end-->
+    </div>
+</div>
+				<!--//content-inner-->
+	<!--/sidebar-menu-->
+		<div class="sidebar-menu">
+			<header class="logo">
+			<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> 
+			<a href="{% url 'core:index' %}"> <span id="logo"> <h1>ECHO</h1></span> </a> 
+		 </header>
+	
+<div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+<!--/down-->
+				<div class="down">	
+							{% comment %} <a href="index.html"><img src={{request.profile.imageURL}}></a> {% endcomment %}
+							<a href="index.html"><span class=" name-caret">Ola Xavier</span></a>
+							<p></p>
+						<ul>
+						<li><a class="tooltips" href="index.html"><span>Perfil</span><i class="lnr lnr-user"></i></a></li>
+							<li><a class="tooltips" href="index.html"><span>Definicoes</span><i class="lnr lnr-cog"></i></a></li>
+							{% comment %} <li><a class="tooltips" href="{% url 'account:login' %}"><span>Sair</span><i class="lnr lnr-power-switch"></i></a></li> {% endcomment %}
+							</ul>
+						</div>
+					<!--//down-->
+				<div class="menu">
+						<ul id="menu" >
+							
+								<li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Cadastros</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+									<ul id="menu-academico-sub" >
+									<li id="menu-academico-boletim" ><a href="{% url 'core:sector' %}">Sectores</a></li>
+									<li id="menu-academico-boletim" ><a href="{% url 'core:instrumento' %}">Instrumentos de SI</a></li>
+									<li id="menu-academico-boletim" ><a href="{% url 'core:necessidade' %}">Necessidades</a></li>
+									</ul>
+								</li>
+						
+							
+						<li id="menu-academico" ><a href="#"><i class="lnr lnr-layers"></i> <span>Movimento de Stock</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+								<ul id="menu-academico-sub" >
+								<li id="menu-academico-avaliacoes" ><a href="{% url 'core:entrada' %}">Entrada</a></li>
+								<li id="menu-academico-avaliacoes" ><a href="#">Saida</a></li>
+
+								</ul>
+							</li>
+
+							<li id="menu-academico" ><a href="#"><i class="lnr lnr-layers"></i> <span>Requisicoes</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+								<ul id="menu-academico-sub" >
+								<li id="menu-academico-avaliacoes" ><a href="#">Listar</a></li>
+
+								</ul>
+							</li>
+						<li><a href="chart.html"><i class="lnr lnr-chart-bars"></i> <span>Levantamento no DPS</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+							<ul>
+							<li><a href="#"><i class="lnr lnr-map"></i>Listar</a></li>
+							
+						</ul>
+						</li>
+						<li id="menu-comunicacao" ><a href="#"><i class="fa fa-smile-o"></i> <span>Mais</span><span class="fa fa-angle-double-right" style="float: right"></span></a>
+							<ul id="menu-comunicacao-sub" >
+							<li id="menu-mensagens" style="width:120px" ><a href="#">Mais <i class="fa fa-angle-right" style="float: right; margin-right: -8px; margin-top: 2px;"></i></a>
+								<ul id="menu-mensagens-sub" >
+								<li id="menu-mensagens-enviadas" style="width:130px" ><a href="#">R</a></li>
+								<li id="menu-mensagens-recebidas"  style="width:130px"><a href="#">B</a></li>
+								</ul>
+							</li>
+							<li id="menu-arquivos" ><a href="500.html">500</a></li>
+							</ul>
+						</li>
+						</ul>
+					</div>
+					</div>
+					<div class="clearfix"></div>		
+				</div>
+<script>
+	var toggle = true;
+				
+	$(".sidebar-icon").click(function() {                
+		if (toggle)
+		{
+		$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+		$("#menu span").css({"position":"absolute"});
+		}
+		else
+		{
+		$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+		setTimeout(function() {
+			$("#menu span").css({"position":"relative"});
+		}, 400);
+		}
+					
+    toggle = !toggle;
+	});
+</script>
+
+<!--js -->
+<!--<link rel="stylesheet" href="css/vroom.css"> -->
+<!--<script type="text/javascript" src="js/vroom.js"></script>
+<script type="text/javascript" src="js/TweenLite.min.js"></script>
+<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script> -->
+<!-- <script src="js/scripts.js"></script> -->
+<!-- <script type="text/javascript" src="js/tipo.js"></script> -->
+
+<!-- Date Time Picker JS -->
+<script>
+	$(function () {
+	  $("#id_data_entrada").datepicker({format:'dd-mm-yyyy'});
+	});
+</script>
+
+  
+
+</body>
+</html>

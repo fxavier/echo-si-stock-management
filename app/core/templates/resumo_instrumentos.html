@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+<h3 class="inner-tittle two">Resumo</h3>
+<div class="graph">
+<div class="tables">
+    <table class="table table-hover">
+     <thead>
+        <tr>
+            <th>Provincia</th>
+            <th>Sector</th>
+            <th>Data devolucao</th>
+            <th>Valor</th>
+            <th>Estado</th>
+            <th>Banco</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+        {% for cheque in object_list  %}
+
+            <td>{{cheque.numero_cheque}}</td>
+            <td>{{cheque.numero_conta}}</td>
+            <td>{{cheque.data_devolucao|date:'d-m-Y'}}</td>
+            <td>{{cheque.valor_cheque}}</td>
+            <td>{{cheque.estado_cheque}}</td>
+            <td>{{cheque.banco.nome}}</td>
+        </tr>
+        {% endfor %}     
+        </tbody>
+      
+    </table> 
+</div>
+<a href="{% url 'core:cheque-cancelado-relatorio' %}" class="btn btn-success">
+<span class="glyphicon glyphicon-print"></span>Imprimir
+</a>
+</div>
+
+</div>
+
+{% endblock content %}
