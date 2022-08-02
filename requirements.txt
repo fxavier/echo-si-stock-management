@@ -4,4 +4,6 @@ import-export==0.2.67.dev6
 django-import-export
 Pillow
 django-widget-tweaks
+django-bootstrap-datepicker-plus
+django-bootstrap4
 # django-summernote>=0.8.20.0,<0.9

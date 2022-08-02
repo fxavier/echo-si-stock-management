@@ -29,23 +29,16 @@ class ProvinciaAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ['id', 'nome']
 
 class SectorAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ['id', 'nome', 'provincia']
-    list_filter = ('provincia',)
+    list_display = ['id', 'nome']
+    list_filter = ('nome',)
     
 class InstrumentoAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ['id', 'nome', 'stock', 'provincia', 'sector']
-    list_filter = ('provincia', 'sector',)
-    
-class NecessidadeAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ['id', 'provincia', 'sector', 'instrumento', 'ano', 'quantidade']
-    list_filter = ('provincia', 'sector',)
+    list_display = ['id', 'provincia', 'sector', 'nome', 'stock', 'ano', 'quantidade_necessaria']
+    list_filter = ('provincia', 'sector', 'nome',)
     
 class EntradaAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ['id', 'data_entrada', 'fornecedor', 'quantidade', 'provincia','instrumento']
     list_filter = ('provincia',)
-    
-class LevantamentoDepositoAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ['id', 'data_levantamento', 'provincia', 'instrumento', 'quantidade']
     
 class RequisicaoAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ['id', 'data_requisicao', 'provincia', 'instrumento', 'quantidade']
@@ -57,8 +50,9 @@ admin.site.register(User, UserAdmin)
 admin.site.register(models.Provincia, ProvinciaAdmin)
 admin.site.register(models.Sector, SectorAdmin)
 admin.site.register(models.Instrumento, InstrumentoAdmin)
-admin.site.register(models.Necessidade, NecessidadeAdmin)
 admin.site.register(models.Entrada, EntradaAdmin)
-admin.site.register(models.LevantamentoDeposito, LevantamentoDepositoAdmin)
 admin.site.register(models.Requisicao, RequisicaoAdmin)
 admin.site.register(models.Aprovacao, AprovacaoAdmin)
+admin.site.register(models.Resumo)
+
+admin.site.site_header = 'ECHO SI Administration'

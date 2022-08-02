@@ -8,10 +8,10 @@
 <!--/set-1-->
 <div class="set-1">
   <div class="graph-2 general">
-    <h3 class="inner-tittle two">Registar Movimento de Entrada de SI</h3>
+    <h3 class="inner-tittle two">Registar Requisicao</h3>
       <div class="grid-1">
           <div class="form-body">
-            <form class="form-horizontal" method="post" id="entradaForm" data-instrumentos-url="{% url 'core:listar_instrumentos' %}">
+            <form class="form-horizontal" method="post" id="requisicaoForm" data-instrumentos-url="{% url 'core:listar_instrumentos' %}">
             {% csrf_token %}
             {% for field in form.visible_fields %}
               <div class="form-group">
@@ -58,7 +58,7 @@
 </script> {% endcomment %}
 <script>
   $("#id_sector").change(function() {
-    var url = $("#entradaForm").attr("data-instrumentos-url");
+    var url = $("#requisicaoForm").attr("data-instrumentos-url");
     var sectorId = $(this).val();
 
     $.ajax({

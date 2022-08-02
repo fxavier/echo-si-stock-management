@@ -1,0 +1,4 @@
+<option value="">Selecione</option>
+{% for r in requisicao %}
+<option value="{{ r.pk }}">{{ r.nome }}</option>
+{% endfor %}

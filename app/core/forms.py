@@ -1,29 +1,35 @@
 from django import forms
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.utils.translation import ugettext as _
 
-from core.models import Instrumento, Provincia, Sector, Entrada, Necessidade
+from core.models import Instrumento, Provincia, Sector, Entrada, Requisicao, Aprovacao
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class SectorForm(forms.ModelForm):
     class Meta:
         model = Sector
-        fields = ('provincia', 'nome',)
+        fields = ('nome',)
         
         label = {
-            'provincia': _('Provincia'),
             'nome': _('Nome'),
         }
 
 class InstrumentoForm(forms.ModelForm):
     class Meta:
         model = Instrumento
-        fields = ('provincia', 'sector', 'nome', 'stock')
+        fields = ('provincia','sector', 'nome', 'ano', 'quantidade_necessaria', 'stock')
         
         label = {
             'provincia': _('Provincia'),
             'sector': _('Sector'),
             'nome': _('Nome'),
             'stock': _('Stock'),
+            'ano': _('Ano'),
+            'quantidade_necessaria': _('Necessidade')
+         
         }
         
         
@@ -31,6 +37,10 @@ class EntradaForm(forms.ModelForm):
     class Meta:
         model = Entrada
         fields = ('data_entrada', 'provincia','fornecedor', 'sector', 'instrumento','quantidade')
+        
+        widgets = {
+            'data_entrada': DatePickerInput(),
+        }
         
         labels = {
             'provincia': _('Provincia'),
@@ -45,17 +55,7 @@ class EntradaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['instrumento'].queryset = Instrumento.objects.none()
-        self.fields['sector'].queryset =Sector.objects.none()
-        
-        if 'provincia' in self.data:
-            try:
-                provincia_id = int(self.data.get('provincia'))
-                self.fields['sector'].queryset = Sector.objects.filter(provincia_id=provincia_id).order_by('nome')
-            except(ValueError, TypeError):
-                pass
-        elif self.instance.pk:
-            self.fields['provincia'].queryset = self.instance.provincia.sector_set.order_by('nome')
-            
+                    
         
         if 'sector' in self.data: 
             try:
@@ -67,19 +67,20 @@ class EntradaForm(forms.ModelForm):
             self.fields['sector'].queryset = self.instance.sector.instrumento_set.order_by('nome')
        
             
-            
-class NecessidadeForm(forms.ModelForm):
+                  
+class RequisicaoForm(forms.ModelForm):
     class Meta:
-        model = Necessidade
-        fields = ('provincia', 'sector', 'ano', 'instrumento', 'quantidade')
+        model = Requisicao
+        fields = ('data_requisicao', 'provincia', 'sector', 'instrumento', 'quantidade')
         
         labels = {
+            'data_requisicao': _('Data de Requisicao'),
             'provincia': _('Provincia'),
             'sector': _('Sector'),
-            'ano': _('Ano'),
             'instrumento': _('Instrumento'),
             'quantidade': _('Quantidade')
         }
+        
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -94,3 +95,16 @@ class NecessidadeForm(forms.ModelForm):
         elif self.instance.pk:
             self.fields['sector'].queryset = self.instance.sector.instrumento_set.order_by('nome')
         
+        
+class AprovacaoForm(forms.ModelForm):
+    
+    class Meta:
+        model = Aprovacao
+        fields = ('requisicao','tipo_aprovacao', 'comentario')
+        
+        label = {
+            'requisicao': _('Requisicao'),
+            'tipo_aprovacao': _('Tipo Aprovacao'),
+            'comentario': _('Comentario'),
+                   
+        }

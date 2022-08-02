@@ -19,22 +19,25 @@
     <table class="table table-hover">
      <thead>
         <tr>
+         
             <th>Provincia</th>
             <th>Sector</th>
-            <th>Nome</th>
+            <th>Instrumento</th>
+            <th>Quantidade</th>
+            <th>Necessidade</th>
             <th>Stock</th>
-            <th>Necdade</th>
         
         </tr>
      </thead>
      <tbody>
         <tr>
         {% for instrumento in instrumentos  %}
+        
             <td>{{instrumento.provincia.nome}}</td>
             <td>{{instrumento.sector.nome}}</td>
             <td>{{instrumento.nome}}</td>
-            <td>{{instrumento.stock}}</td>
-            <td>{{instrumento.quantidade_necessaria}}</td>
+            <td>{{instrumento.quantidade}}</td>
+            <td>{{}}
         </tr>
         {% endfor %}     
         </tbody>

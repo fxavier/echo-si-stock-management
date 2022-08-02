@@ -1,10 +1,10 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 {% block content %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col">
-            <h3 class="inner-tittle two">Resumo</h3>
+            <h3 class="inner-tittle two">Requisicao </h3>
         </div>
     </div>
     <div class="row">
@@ -14,12 +14,14 @@
                    <tr>
                        <th>Provincia</th>
                        <th>Sector</th>
+                       <th>REQ</th>
                        <th>Instrumento</th>
-                       <th>Stock Inventariado(ECHO-MISAU)</th>
+                       <th>Stock</th>
                        <th>Necdade</th>
                        <th>Ano</th>
                        <th>Data de entrada</th>
                        <th>Qtd.Entrada</th>
+                       <th>Fornecedor</th>
                        <td>Data Requisicao</td>
                        <td>Qtd.Requisitada</td>
                        <td>Status</td>
@@ -32,6 +34,11 @@
 
                        <td>{{resumo.provincia}}</td>
                        <td>{{resumo.sector}}</td>
+                       {% if resumo.requisicao_id %}
+                         <td>{{resumo.requisicao_id}}</td>
+                       {%else%}
+                         <td></td>
+                       {%endif%}
                        <td>{{resumo.instrumento}}</td>
                        <td>{{resumo.stock}}</td>
                        <td>{{resumo.necessidade}}</td>
@@ -40,6 +47,7 @@
                        {% if resumo.quantidade_entrada %}
                          <td>{{resumo.quantidade_entrada}}</td>
                        {%endif%}
+                       <td>{{resumo.fornecedor}}</td>
                        <td>{{resumo.data_requisicao|date:'d-m-Y'}}</td>
                        {% if resumo.quantidade_requisitada %}
                          <td>{{resumo.quantidade_requisitada}}</td>
@@ -57,9 +65,11 @@
                         <div class="row">
                             <div class="col">
                                 {% if resumo.status_requisicao == 'Pendente' %}
-                                <a href="{% url 'core:aprovacao' requisicao_id=resumo.requisicao_id %}" class="btn-sm btn-success m-1">
-                                   <!---- <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> -->
-                                   Aprovar
+                                <a href="{% url 'core:requisicao'%}" class="btn-sm btn-success m-1">
+                                    <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                                </a>
+                                <a href="{% url 'core:requisicao'%}" class="btn-sm btn-danger m-1">
+                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                                 </a>
                                 {% endif%}
                             </div>

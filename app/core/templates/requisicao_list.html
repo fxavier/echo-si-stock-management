@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+<h3 class="inner-tittle two">Lista de Requisicoes</h3>
+<div class='row'>
+    <a href="{% url 'core:requisicao-new'%}" class="btn btn-success float-right">
+        <span class="glyphicon glyphicon-plus"></span>Novo
+        </a>
+
+</div>
+
+<div class="graph">
+<div class="tables">
+    <table class="table table-hover">
+     <thead>
+        <tr>
+            <th>Data de Requisicao</th>
+            <th>Provincia</th>
+            <th>Instrumento</th>
+            <th>Qtd.</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Accoes</th>
+           
+        
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+        {% for requisicao in requisicoes  %}
+            <td>{{requisicao.data_requisicao|date:'d-m-Y'}}</td>
+            <td>{{requisicao.provincia.nome}}</td>
+            <td>{{requisicao.instrumento.nome}}</td>
+            <td>{{requisicao.quantidade}}</td>
+            <td>{{requisicao.instrumento.stock}}</td>
+            {% if requisicao.status_requisicao == 'Pendente' %}
+            <td><span class="label label-warning">{{requisicao.status_requisicao}}</span></td>
+            {% elif requisicao.status_requisicao == 'Rejeitada' %}
+            <td><span class="label label-danger">{{requisicao.status_requisicao}}</span></td>
+            {% elif requisicao.status_requisicao == 'Aprovada' %}
+            <td><span class="label label-success">{{requisicao.status_requisicao}}</span></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'core:requisicao-update' pk=requisicao.id %}" class="btn-sm btn-success">
+                   Editar
+                </a>
+
+            </td>
+
+        </tr>
+        {% endfor %}     
+        </tbody>
+      
+    </table> 
+   {% include 'layouts/paginations.html' %}
+</div>
+</div>
+<a href="#" class="btn btn-success">
+<span class="glyphicon glyphicon-sort"></span>Exportar
+</a>
+</div>
+
+</div>
+
+{% endblock content %}

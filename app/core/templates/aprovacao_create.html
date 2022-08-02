@@ -7,10 +7,10 @@
 <!--/set-1-->
 <div class="set-1">
   <div class="graph-2 general">
-    <h3 class="inner-tittle two">Necessidade</h3>
+    <h3 class="inner-tittle two">Aprovar Requisicao</h3>
       <div class="grid-1">
           <div class="form-body">
-             <form class="form-horizontal" method="post" id="necessidadeForm" data-instrumentos-url="{% url 'core:listar_instrumentos' %}">
+            <form class="form-horizontal" method="post" id="aprovacaoForm" data-requisicao-url="{% url 'core:aprovacao-requisicao' %}">
             {% csrf_token %}
             {% for field in form.visible_fields %}
               <div class="form-group">
@@ -37,10 +37,10 @@
     </div>
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
+
+{% comment %} <script>
   $("#id_sector").change(function() {
-    var url = $("#necessidadeForm").attr("data-instrumentos-url");
+    var url = $("#entradaForm").attr("data-instrumentos-url");
     var sectorId = $(this).val();
 
     $.ajax({
@@ -52,7 +52,7 @@
         $("#id_instrumento").html(data);
       }
     });
-  });
+  }); {% endcomment %}
 
 </script>
 {% endblock content  %} 
